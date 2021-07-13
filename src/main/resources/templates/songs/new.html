@@ -1,0 +1,38 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body})}">
+  <body>
+    <h1>Add a New Song</h1>
+
+    <form action="/songs" method="POST" th:object="${song}">
+      <div>
+        <label for="title">Title</label>
+        <input type="text" th:field="*{title}" />
+        <p th:errors="*{title}" style="display:inline-block;"></p>
+      </div>
+      <div>
+        <label for="genre">Genre</label>
+        <input type="text" th:field="*{genre}" />
+        <p th:errors="*{genre}" style="display:inline-block;"></p>
+
+      </div>
+      <div>
+        <label for="releaseYear">Release Year</label>
+        <input type="number" th:field="*{releaseYear}" />
+        <p th:errors="*{releaseYear}" style="display:inline-block;"></p>
+
+      </div>
+      <div>
+        <p>Explicit Content:
+          <label>Yes
+            <input type="radio" th:field="*{explicitContent}" value="true">
+          </label>
+          <label>No
+            <input type="radio" th:field="*{explicitContent}" value="false">
+          </label>
+        </p>
+        <p th:errors="*{explicitContent}" style="display:inline-block;"></p>
+      </div>
+      <div><input type="submit" value="Add Song" /></div>
+    </form>
+  </body>
+</html>
